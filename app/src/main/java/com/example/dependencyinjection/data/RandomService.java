@@ -1,5 +1,6 @@
 package com.example.dependencyinjection.data;
 
+import com.example.dependencyinjection.di.Injector;
 import com.example.dependencyinjection.model.RandomUser;
 import com.example.dependencyinjection.network.NetworkManager;
 
@@ -15,9 +16,7 @@ public class RandomService {
     private RandomAPI randomAPI;
 
     public RandomService(){
-        NetworkManager networkManager = new NetworkManager();
-        Retrofit retrofit = networkManager.provideRetrofit(RandomAPI.BASE_URL);
-        randomAPI = retrofit.create(RandomAPI.class);
+        randomAPI = Injector.provideRandomAPI();
 
     }
 
@@ -49,7 +48,7 @@ public class RandomService {
     }
 
 
-    interface Callback{
+    public interface Callback{
 
         void onRandomUser(RandomUser user);
         void onError(String error);
