@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements RandomService.Cal
 
 
 
+ manual-injection
         service = Injector.provideService();
         service.RandomUser(this);
 
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements RandomService.Cal
     @Override
     public void onError(String error) {
         Log.d("SOL_BAD", "Bad news jack: " + error);
+
 
     }
 }
